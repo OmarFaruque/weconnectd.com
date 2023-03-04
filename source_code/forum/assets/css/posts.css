@@ -1,0 +1,97 @@
+.btnr{
+    font-size:10px;
+    background:orange;
+    display:underline;
+    color;red;
+    text-decoration: underline;
+}
+
+.customtopLeft {
+    float: left;
+    width: calc( 22% - 20px );
+    padding: 10px;
+}
+
+.customtopRight {
+    float: right;
+    width: calc( 78% - 20px );
+    padding: 10px;
+}
+.splashBlue{
+    margin-bottom:20px;
+    color: #f57c00;
+    padding: 10px;
+    background: #000;
+    border: 1px solid #f57c00;
+}
+.forum-post{
+    padding: 10px 5px;
+    border: 1px solid #B45A5A;
+    box-shadow: 0px 1px 1px 0px #B45A5A;
+}
+.cate-cret{
+    display: flex;
+    width: 100%;
+    padding: 5px 0px;
+    font-size: 13px;
+    font-weight: 500;
+}
+.forum-post .title{
+    font-size: 20px;
+    font-weight: 600;
+    color: #4a2a2a;
+    display: flex;
+}
+.forum-post .title span:first-child{
+    flex: 6;
+}
+.forum-post .title span:last-child{
+    flex: 1;
+    font-weight: 100;
+    font-size: 12px;
+    text-align: right;
+}
+
+
+.cate,.cret{
+    width:50%;
+}
+.more-btn{
+    margin:15px 0px 5px 0px;
+}
+.more-btn a{
+    border: 2px solid #f57c00;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #f57c00;
+    font-size: 16px;
+    font-weight: 550;
+}
+.add-btn{
+    border: 3px solid #f57c00;
+    background: #000;
+    color: #f57c00;
+    padding: 10px 30px;
+    font-size: 20px;
+    font-weight: 600;
+    width: fit-content;
+}
+.container a:hover {
+    text-decoration: none;
+}
+.sideblog h3, div:not(.mainmanu) li{
+    padding: 10px;
+    font-size: 16px !important;
+    font-weight: 550 !important;
+}
+.headerBottom .mainmanu ul li{
+    padding: unset;
+}
+.comment .date-time span {
+    color: #444;
+    font-weight: 100;
+    font-size: 12px;
+}
+.comment .date-time {
+    margin-bottom: 7px;
+}

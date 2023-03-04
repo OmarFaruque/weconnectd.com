@@ -1,0 +1,137 @@
+.customtopLeft {
+    float: left;
+    width: calc( 22% - 20px );
+    padding: 10px;
+}
+
+.customtopRight {
+    float: right;
+    width: calc( 78% - 20px );
+    padding: 10px;
+}
+.splashBlue{
+    margin-bottom:20px;
+    color: #f57c00;
+    padding: 10px;
+    background: #000;
+    border: 1px solid #f57c00;
+}
+.forum-post{
+    padding: 10px 5px;
+    border: 1px solid #B45A5A;
+    box-shadow: 0px 1px 1px 0px #B45A5A;
+    display: flex;
+}
+.forum-post .pimg img{
+    opacity: 0;
+    width: 100%;
+}
+.forum-post > :not(.pimg){
+    flex: 7;
+}
+.forum-post > .pimg{
+    flex: 1;
+}
+.forum-post .pimg > div {
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 43px;
+    background-size: 100%;
+    background-position: center;
+}
+.cate-cret{
+display: flex;
+width: 100%;
+padding: 5px 0px;
+font-size: 13px;
+font-weight: 500;
+}
+.forum-post .title{
+    display: flex;
+}
+.forum-post .title > div:first-child{
+    font-size: 20px;
+    font-weight: 600;
+    color: #4a2a2a;
+    flex: 3;
+}
+.forum-post .title > div:last-child{
+    flex: 1;
+    display: flex;
+    justify-content: end;
+}
+.forum-post .title > div:last-child small{
+    font-size: 12px;
+    font-weight: 100;
+    color: #999;
+}
+.cate,.cret{
+    width:50%;
+}
+.more-btn{
+    margin:15px 0px 5px 0px;
+}
+.more-btn a{
+border: 2px solid #f57c00;
+padding: 5px 10px;
+border-radius: 5px;
+color: #f57c00;
+font-size: 16px;
+font-weight: 550;
+}
+.add-btn{
+    border: 3px solid #f57c00;
+background: #000;
+color: #f57c00;
+padding: 7px 20px;
+font-size: 15px;
+font-weight: 600;
+width: fit-content;
+}
+.container a:hover {
+text-decoration: none;
+}
+.sideblog h3, div:not(.mainmanu) li{
+    padding: 10px;
+    font-size: 16px !important;
+    font-weight: 550 !important;
+}
+.headerBottom .mainmanu ul li{
+    padding: unset;
+}
+
+#postForm {
+    max-width: 100%;
+    border: 1px solid #000;
+    padding: 30px 10px;
+    background: rgb(245 124 0 / 50%);
+    box-shadow: 0px 2px 5px 2px;
+    margin: 20px 5px;
+}
+
+.register-header {
+    padding: 0px 0px 5px 0px;
+    margin: 0px 0px 20px 0px;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 3px solid #12192C;
+}
+
+.form-control .form-row {
+    width: 100%;
+    display: flex;
+    padding: 5px 2px;
+    font-size: 14px;
+    font-weight: 550;
+}
+
+.form-row .label {
+    width: 100px;
+    text-align: left;
+}
+
+.form-row .input {
+    width: calc(100% - 100px);
+}

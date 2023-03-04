@@ -1,0 +1,59 @@
+[01-Jul-2022 07:46:13 UTC] PHP Warning:  Undefined array key "auth_email" in /home3/alfrihjgdt/beta.alfrik.com/admin/includes/auth_head.php on line 2
+[01-Jul-2022 07:46:13 UTC] PHP Warning:  Undefined variable $auth in /home3/alfrihjgdt/beta.alfrik.com/admin/edit-schools.php on line 8
+[01-Jul-2022 07:51:31 UTC] PHP Warning:  Undefined variable $school_d in /home3/alfrihjgdt/beta.alfrik.com/admin/edit-schools.php on line 57
+[01-Jul-2022 07:51:31 UTC] PHP Warning:  Trying to access array offset on value of type null in /home3/alfrihjgdt/beta.alfrik.com/admin/edit-schools.php on line 57
+[02-Jul-2022 09:21:31 UTC] PHP Warning:  Array to string conversion in /home3/alfrihjgdt/beta.alfrik.com/admin/add-updates.php on line 30
+[02-Jul-2022 09:29:26 UTC] PHP Warning:  Undefined variable $fiename in /home3/alfrihjgdt/beta.alfrik.com/admin/edit-updates.php on line 44
+[03-Jul-2022 02:25:34 UTC] PHP Warning:  Undefined array key "auth_email" in /home3/alfrihjgdt/beta.alfrik.com/admin/includes/auth_head.php on line 2
+[03-Jul-2022 02:25:34 UTC] PHP Warning:  Undefined variable $auth in /home3/alfrihjgdt/beta.alfrik.com/admin/view-team.php on line 10
+[03-Jul-2022 02:25:34 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/alfrihjgdt/beta.alfrik.com/admin/includes/auth_head.php:25) in /home3/alfrihjgdt/beta.alfrik.com/admin/view-team.php on line 133
+[03-Jul-2022 03:47:52 UTC] PHP Warning:  Undefined array key "auth_email" in /home3/alfrihjgdt/beta.alfrik.com/admin/includes/auth_head.php on line 2
+[03-Jul-2022 03:47:52 UTC] PHP Warning:  Undefined variable $auth in /home3/alfrihjgdt/beta.alfrik.com/admin/views-updates.php on line 8
+[03-Jul-2022 03:47:52 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/alfrihjgdt/beta.alfrik.com/admin/includes/auth_head.php:25) in /home3/alfrihjgdt/beta.alfrik.com/admin/views-updates.php on line 136
+[05-Jul-2022 08:07:21 UTC] PHP Warning:  Undefined variable $school_id in /home3/alfrihjgdt/beta.alfrik.com/admin/edit-recent-result.php on line 51
+[05-Jul-2022 12:06:53 UTC] PHP Warning:  Undefined array key "auth_email" in /home3/alfrihjgdt/beta.alfrik.com/admin/includes/auth_head.php on line 2
+[05-Jul-2022 12:06:53 UTC] PHP Warning:  Undefined variable $auth in /home3/alfrihjgdt/beta.alfrik.com/admin/manage-banner.php on line 8
+[05-Jul-2022 12:06:53 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/alfrihjgdt/beta.alfrik.com/admin/includes/auth_head.php:25) in /home3/alfrihjgdt/beta.alfrik.com/admin/manage-banner.php on line 170
+[05-Jul-2022 12:24:34 UTC] PHP Warning:  Undefined array key "image" in /home3/alfrihjgdt/beta.alfrik.com/admin/manage-banner.php on line 195
+[05-Jul-2022 12:28:44 UTC] PHP Warning:  Undefined array key "image" in /home3/alfrihjgdt/beta.alfrik.com/admin/manage-banner.php on line 199
+[05-Jul-2022 12:30:47 UTC] PHP Warning:  Undefined array key "image" in /home3/alfrihjgdt/beta.alfrik.com/admin/manage-banner.php on line 199
+[05-Jul-2022 12:31:37 UTC] PHP Warning:  Undefined variable $banner_id in /home3/alfrihjgdt/beta.alfrik.com/admin/manage-banner.php on line 12
+[05-Jul-2022 12:31:37 UTC] PHP Warning:  Undefined variable $edit_d in /home3/alfrihjgdt/beta.alfrik.com/admin/manage-banner.php on line 143
+[05-Jul-2022 12:31:37 UTC] PHP Warning:  Trying to access array offset on value of type null in /home3/alfrihjgdt/beta.alfrik.com/admin/manage-banner.php on line 143
+[05-Jul-2022 12:33:25 UTC] PHP Warning:  Undefined variable $edit_d in /home3/alfrihjgdt/beta.alfrik.com/admin/manage-banner.php on line 15
+[05-Jul-2022 12:33:25 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on null in /home3/alfrihjgdt/beta.alfrik.com/admin/manage-banner.php:15
+Stack trace:
+#0 {main}
+  thrown in /home3/alfrihjgdt/beta.alfrik.com/admin/manage-banner.php on line 15
+[11-Jul-2022 06:26:23 UTC] PHP Warning:  Attempt to read property "num_rows" on bool in /home3/alfrihjgdt/beta.alfrik.com/admin/add-blog.php on line 124
+[11-Jul-2022 06:44:39 UTC] PHP Warning:  Attempt to read property "num_rows" on bool in /home3/alfrihjgdt/beta.alfrik.com/admin/add-blog.php on line 124
+[11-Jul-2022 06:57:20 UTC] PHP Warning:  move_uploaded_file(upload/blog_img/annie-spratt-4-4WPFLVhAY-unsplash.jpg): Failed to open stream: No such file or directory in /home3/alfrihjgdt/beta.alfrik.com/admin/add-blog.php on line 34
+[11-Jul-2022 06:57:20 UTC] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpowE6xw&quot; to &quot;upload/blog_img/annie-spratt-4-4WPFLVhAY-unsplash.jpg&quot; in /home3/alfrihjgdt/beta.alfrik.com/admin/add-blog.php on line 34
+[11-Jul-2022 06:57:20 UTC] PHP Warning:  Undefined variable $category_id in /home3/alfrihjgdt/beta.alfrik.com/admin/add-blog.php on line 36
+[11-Jul-2022 06:58:17 UTC] PHP Warning:  move_uploaded_file(upload/blog_img/annie-spratt-4-4WPFLVhAY-unsplash.jpg): Failed to open stream: No such file or directory in /home3/alfrihjgdt/beta.alfrik.com/admin/add-blog.php on line 34
+[11-Jul-2022 06:58:17 UTC] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpeNVO1C&quot; to &quot;upload/blog_img/annie-spratt-4-4WPFLVhAY-unsplash.jpg&quot; in /home3/alfrihjgdt/beta.alfrik.com/admin/add-blog.php on line 34
+[11-Jul-2022 06:58:17 UTC] PHP Warning:  Undefined variable $category_id in /home3/alfrihjgdt/beta.alfrik.com/admin/add-blog.php on line 36
+[11-Jul-2022 07:08:17 UTC] PHP Warning:  move_uploaded_file(upload/blog_img/annie-spratt-4-4WPFLVhAY-unsplash.jpg): Failed to open stream: No such file or directory in /home3/alfrihjgdt/beta.alfrik.com/admin/add-blog.php on line 34
+[11-Jul-2022 07:08:17 UTC] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/php2JQDnN&quot; to &quot;upload/blog_img/annie-spratt-4-4WPFLVhAY-unsplash.jpg&quot; in /home3/alfrihjgdt/beta.alfrik.com/admin/add-blog.php on line 34
+[11-Jul-2022 07:08:17 UTC] PHP Warning:  Undefined variable $category_id in /home3/alfrihjgdt/beta.alfrik.com/admin/add-blog.php on line 36
+[11-Jul-2022 07:08:24 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on bool in /home3/alfrihjgdt/beta.alfrik.com/admin/view-blog.php:102
+Stack trace:
+#0 {main}
+  thrown in /home3/alfrihjgdt/beta.alfrik.com/admin/view-blog.php on line 102
+[11-Jul-2022 11:05:05 UTC] PHP Warning:  Undefined array key "auth_email" in /home3/alfrihjgdt/beta.alfrik.com/admin/includes/auth_head.php on line 2
+[11-Jul-2022 11:05:05 UTC] PHP Warning:  Undefined variable $auth in /home3/alfrihjgdt/beta.alfrik.com/admin/edit-blog.php on line 11
+[11-Jul-2022 11:05:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/alfrihjgdt/beta.alfrik.com/admin/edit-blog.php:8) in /home3/alfrihjgdt/beta.alfrik.com/admin/edit-blog.php on line 263
+[12-Jul-2022 10:05:36 UTC] PHP Warning:  Undefined array key "auth_email" in /home3/alfrihjgdt/beta.alfrik.com/admin/includes/auth_head.php on line 2
+[12-Jul-2022 10:05:36 UTC] PHP Warning:  Undefined variable $auth in /home3/alfrihjgdt/beta.alfrik.com/admin/edit-blog.php on line 11
+[12-Jul-2022 10:05:36 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/alfrihjgdt/beta.alfrik.com/admin/edit-blog.php:8) in /home3/alfrihjgdt/beta.alfrik.com/admin/edit-blog.php on line 263
+[12-Jul-2022 11:02:23 UTC] PHP Warning:  Undefined array key "auth_email" in /home3/alfrihjgdt/beta.alfrik.com/admin/includes/auth_head.php on line 2
+[12-Jul-2022 11:02:23 UTC] PHP Warning:  Undefined variable $auth in /home3/alfrihjgdt/beta.alfrik.com/admin/edit-blog.php on line 11
+[12-Jul-2022 11:02:23 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/alfrihjgdt/beta.alfrik.com/admin/edit-blog.php:8) in /home3/alfrihjgdt/beta.alfrik.com/admin/edit-blog.php on line 263
+[13-Jul-2022 07:00:19 UTC] PHP Warning:  Undefined array key "auth_email" in /home3/alfrihjgdt/beta.alfrik.com/admin/includes/auth_head.php on line 2
+[13-Jul-2022 07:00:19 UTC] PHP Warning:  Undefined variable $auth in /home3/alfrihjgdt/beta.alfrik.com/admin/edit-schools.php on line 8
+[13-Jul-2022 07:05:52 UTC] PHP Warning:  move_uploaded_file(upload/exam_img/Screenshot (95).png): Failed to open stream: No such file or directory in /home3/alfrihjgdt/beta.alfrik.com/admin/add-exam.php on line 32
+[13-Jul-2022 07:05:52 UTC] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpjqSS4i&quot; to &quot;upload/exam_img/Screenshot (95).png&quot; in /home3/alfrihjgdt/beta.alfrik.com/admin/add-exam.php on line 32
+[13-Jul-2022 07:16:32 UTC] PHP Warning:  Undefined array key "" in /home3/alfrihjgdt/beta.alfrik.com/admin/view-exam.php on line 89
+[13-Jul-2022 07:16:32 UTC] PHP Warning:  Trying to access array offset on value of type null in /home3/alfrihjgdt/beta.alfrik.com/admin/view-exam.php on line 89
+[13-Jul-2022 07:41:47 UTC] PHP Warning:  Undefined array key "types_f_paper" in /home3/alfrihjgdt/beta.alfrik.com/admin/edit-exam.php on line 24
+[13-Jul-2022 07:43:11 UTC] PHP Warning:  Undefined array key "types_0f_paper" in /home3/alfrihjgdt/beta.alfrik.com/admin/edit-exam.php on line 24

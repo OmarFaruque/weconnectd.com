@@ -1,0 +1,3 @@
+<div class="footer"><small><center><a href="/misc/about.php">About</a> | <a href="/misc/faq.php">FAQ</a> | <a href="/misc/terms.php">Terms</a> | <a href="/misc/listing.php">Listing/Advertising</a> | <a href="/misc/cue60.php">The CUE 60</a>  | <a href="/misc/privacy.php">Privacy</a> | <a href="mailto: contact@weconnectd.com">Contact WeConnectd</a><br><small>&copy;2022-2023 Weconnectd.com.
+	<b>Powered By Coinconnect</b></center></small></div>
+	
