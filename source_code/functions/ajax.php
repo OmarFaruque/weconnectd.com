@@ -51,3 +51,30 @@ if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'fb_login'){
     }
     echo json_encode($data);
 }
+
+
+
+// Coinmate search ajax callback
+if(isset($_POST['coinmate_search']) && !empty($_POST['coinmate_search'])){
+    $data = array();
+    try{
+        $args = "SELECT * FROM `users` WHERE email LIKE '%".$_POST['coinmate_search']."%' OR username LIKE '%".$_POST['coinmate_search']."%' OR name LIKE '%".$_POST['coinmate_search']."%'";
+        $stmt = $conn->prepare($args);
+        // $stmt->bind_param("ss", $_POST['coinmate_search'], $_POST['coinmate_search']);
+        // $data['qry'] = $args;
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if (mysqli_num_rows($result)) {
+            $users = array();
+            while($row = $result->fetch_assoc()){
+                array_push($users, $row);
+            }
+            $data['users'] = $users;
+        }
+        
+    }
+    catch(\Error $e){
+        $data['error'] = $e->getMessage();
+    }
+    echo json_encode($data);
+}
