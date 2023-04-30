@@ -6,8 +6,21 @@ require($_SESSION['ROOT_PATH'] . "/lib/profile.php");
 require($_SESSION['ROOT_PATH'] . "/coinmate-init/coinmate-country-lists.php"); 
 require($_SESSION['ROOT_PATH'] . "/classes/class-coinmate.php"); 
 
-// LogedIn user details 
-$userDetails = getUserFromName($_SESSION['siteusername'], $conn);
+
+$coinmate = new Coinmate($conn);
+$coinmate->user_id = $_SESSION['user_id'];
+
+//UPdate process
+$msg = false;
+if(isset($_POST['name'])){
+    $msg = $coinmate->update_coinbase_profile($_POST);
+}
+
+// Update pool status
+if(isset($_POST['action']) && $_POST['action'] == 'update_pool_status'){
+    $coinmate->update_pool_status();
+}
+$userDetails = $coinmate->get_user();
 
 ?>
 <!DOCTYPE html>
@@ -21,7 +34,8 @@ $userDetails = getUserFromName($_SESSION['siteusername'], $conn);
         <link rel="stylesheet" href="<?php echo ROOT_URL; ?>static/css/required.css"> 
         <script>
             var global = {
-                root_url: "<?php echo ROOT_URL; ?>"
+                root_url: "<?php echo ROOT_URL; ?>", 
+                user_id: <?php echo $userDetails['id']; ?>
             }
         </script>
     </head>
@@ -29,18 +43,83 @@ $userDetails = getUserFromName($_SESSION['siteusername'], $conn);
         <div class="container bootstrap bg-transparent">
             <?php require($_SESSION['ROOT_PATH'] . "/static/header.php"); ?>
             <div class="p-0">
-				<div class="d-flex gap-4 mt-3">
+				<div class="d-flex gap-4 mt-3 position-relative">
+                    <!-- Loader -->
+                    <div id="loader" style="background-color: #ffffff99" class="position-absolute start-0 top-0 w-100 h-100 zindex-fixed">
+                        <div class="d-flex justify-content-center position-absolute top-50 start-50 translate-middle">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="flex-1 bg-white d-flex flex-column gap-3 p-4 border-rounded rounded border-radious-4">
                             <h1 class="m-0 text-gray-400">My Coinmate</h1>
-                            <button class="btn btn-primary max-auto btn-lg w-100 ">Join Pool</button>
-                            <div class="input-group">
+                            <form action="" method="post">
+                                <input type="hidden" name="action" value="update_pool_status">
+                                <button type="submit" class="btn max-auto btn-lg w-100 <?php echo $userDetails['pool_status'] ? 'btn-primary' : 'btn-danger'; ?> "><?php echo $userDetails['pool_status'] ? 'Remove Pool': 'Join Pool'; ?></button>
+                            </form>                            
+                            
+                            <!-- <div class="input-group">
                                 <input data-bs-toggle="tooltip" data-bs-placement="top" title="Type minimum 3 characters" class="form-control border-end-0 border rounded-pill" type="search"  placeholder="Search" id="searchuser">
                                 <span class="input-group-append">
                                     <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5" type="button">
                                         <i class="fa fa-search"></i>
                                     </button>
                                 </span>
-                            </div>
+                            </div> -->
+                            <hr>
+                            <form id="searchForm">
+                                <div class="mb-3 row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <select data-bs-toggle="tooltip" data-bs-placement="top" title="Select Age Range" class="form-control" name="age" id="ageRange">
+                                                <option value="">Select age range...</option>
+                                                <option value="18-35">18-35</option>
+                                                <option value="36-45">36-45</option>
+                                                <option value="46-65">46-65</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <div class="d-grid">
+                                        <select class="form-select" name="sex" id="ssex" data-bs-toggle="tooltip" data-bs-placement="top" title="Gender">
+                                            <option value="">Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <div class="d-grid">
+                                        <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="Zip code" class="form-control" name="zipcode" id="szipcode" placeholder="ZipCode">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 row">
+                                    <div class="d-grid">
+                                        <input type="text" data-bs-toggle="tooltip" data-bs-placement="top" title="City" class="form-control" name="city" id="scity" placeholder="City...">
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 row" data-bs-toggle="tooltip" data-bs-placement="top" title="Country">
+                                    <select class="form-select select2" name="country" id="scountry">
+                                        <option value="">Country...</option>
+                                        <?php foreach($countries as $k => $country): ?>
+                                        <option value="<?php echo $k; ?>"><?php echo $country; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                
+                            
+                                <div class="mb-3 row">
+                                    <div class="d-grid">
+                                        <button type="submit" id="searchuser" class="btn btn-primary btn-block">Action</button>
+                                    </div>
+                                </div>
+                            </form>
+                            
 
                             <div class="personal-info pt-3">
                                 <ul class="list list-group m-0 p-0 list-unstyled d-flex flex-column gap-3">

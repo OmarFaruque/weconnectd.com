@@ -6,11 +6,6 @@
  */
 require_once($_SESSION['ROOT_PATH'] . '/functions/default_functions.php');
 
-// Burn Profile 
-if (isset($_GET['action']) && $_GET['action'] == 'burn-profile')
-{
-    burnUserProfile($_GET['bid'], $conn);
-}
 
 
 

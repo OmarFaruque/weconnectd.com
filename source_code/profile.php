@@ -11,6 +11,12 @@ require_once($_SESSION['ROOT_PATH'] . '/functions/default_functions.php');
  * Redirect if profile are blocked for this user
  */
 
+// Burn Profile 
+if (isset($_GET['action']) && $_GET['action'] == 'burn-profile')
+{
+    burnUserProfile($_GET['bid'], $conn);
+}
+
 if(!have_visit_access($conn))
     header("Location: ".ROOT_URL."");
 

@@ -8,8 +8,8 @@
                         </div>
 
 
-<!-- personal information -->
- <div class="personal-information p-4">
+                        <!-- personal information -->
+                        <div class="personal-information p-4">
                             <table class="table table-striped table-hover">
                                 <tbody>
                                     <tr>
@@ -18,11 +18,11 @@
                                     </tr>
                                     <tr>
                                         <td>Sex</td>
-                                        <td><?php echo $userDetails['gender'] ? $userDetails['gender'] : 'empty'; ?></td>
+                                        <td class="text-capitalize"><?php echo $userDetails['gender'] ? $userDetails['gender'] : 'empty'; ?></td>
                                     </tr>
                                     <tr>
                                         <td>Country</td>
-                                        <td><?php echo $userDetails['country'] ? $userDetails['country'] : 'empty'; ?></td>
+                                        <td><?php echo $userDetails['country'] ? $countries[$userDetails['country']] : 'empty'; ?></td>
                                     </tr>
                                     <tr>
                                         <td>City</td>

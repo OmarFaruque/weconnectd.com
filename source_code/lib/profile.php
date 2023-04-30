@@ -3,9 +3,10 @@
 use Snipe\BanBuilder\CensorWords;
 
 function getUserFromId($id, $connection) {
-        $stmt = $connection->prepare("SELECT * FROM users WHERE id = ?");
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
+    $stmt = $connection->prepare("SELECT *, u.`id` as id FROM users u LEFT JOIN user_meta m ON u.`id` = m.`user_id` WHERE u.`id` = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 	if($result->num_rows === 0) return('That user does not exist.');
@@ -397,19 +398,4 @@ function redirectToLogin() {
 
 if(isset($_SESSION['siteusername'])) {
     UpdateLoginTime($_SESSION['siteusername'], $conn); 
-}
-
-
-/**
- * Update coinbase data from conmate-edit.php 
- * 
- * @param array from form data
- */
-function update_coinbase_profile($connection, $data = array()){
-    $stmt = $connection->prepare("UPDATE `users` SET `name` = ?, city = ?, country = ?, sex = ?  WHERE 	username = ?");
-    $stmt->bind_param("sssss", $data['name'], $data['city'], $data['country'], $data['sex'], $data['user_name']);
-    $ex = $stmt->execute();
-    $stmt->close();
-
-    return $ex;
 }

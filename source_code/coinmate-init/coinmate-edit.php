@@ -1,10 +1,3 @@
-<?php 
-    // update Process 
-    $msg = false;
-    if(isset($_POST['name'])){
-        $msg = update_coinbase_profile($conn, $_POST);
-    }
-?>
 
 <div class="d-flex align-items-center gap-5">
                             <div class="flex-1">
@@ -34,22 +27,22 @@
             <div class="mb-3 row">
                 <label for="inputName" class="col-4 col-form-label">Name</label>
                 <div class="col-8">
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                    <input type="text" class="form-control" name="name" value="<?php echo $userDetails['name']; ?>" id="name" placeholder="Name">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="sex" class="col-4 col-form-label">Sex</label>
                 <div class="col-8">    
                     <select class="form-select" name="sex" id="sex">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <option <?php echo $userDetails['gender'] == 'male' ? 'selected' : ''; ?> value="male">Male</option>
+                        <option <?php echo $userDetails['gender'] == 'female' ? 'selected' : ''; ?> value="female">Female</option>
                     </select>
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="city" class="col-4 col-form-label">City Name</label>
                 <div class="col-8">
-                    <input type="text" class="form-control" name="city" id="city" placeholder="City...">
+                    <input type="text" class="form-control" value="<?php echo $userDetails['city']; ?>" name="city" id="city" placeholder="City...">
                 </div>
             </div>
             <div class="mb-3 row">
@@ -58,7 +51,7 @@
                     <select class="form-select select2" name="country" id="country">
                         <option value="">Country</option>
                         <?php foreach($countries as $k => $country): ?>
-                        <option value="<?php echo $k; ?>"><?php echo $country; ?></option>
+                        <option <?php echo $userDetails['country'] == $k ? 'selected' : ''; ?> value="<?php echo $k; ?>"><?php echo $country; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

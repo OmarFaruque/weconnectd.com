@@ -278,9 +278,7 @@ require_once($_SESSION['ROOT_PATH'] . "/includes/dbconn.php");
 			.header_img_left{
 				width:50%;
 			}
-			.header_img_up{
-				height:55%;
-			}
+			
         </style>
 		 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
          <script>
@@ -585,7 +583,7 @@ require_once($_SESSION['ROOT_PATH'] . "/includes/dbconn.php");
                        $password = @$_POST['password'];
                        $passwordhash = password_hash(@$password, PASSWORD_DEFAULT);
 
-                       $stmt = $conn->prepare("SELECT * FROM `users` WHERE email = ? OR username=?");
+                       $stmt = $conn->prepare("SELECT * FROM `users` WHERE (email = ? OR username=?) AND `status`!= 'deleted'");
                        $stmt->bind_param("ss", $email, $email);
                        $stmt->execute();
                        $result = $stmt->get_result();
@@ -647,12 +645,8 @@ require_once($_SESSION['ROOT_PATH'] . "/includes/dbconn.php");
                                 </div>
                             </div>
                             <div class="facebookLogin">
-                          
-
                                 <p>Or</p>
-                                
                                 <div class="fb-login-button" data-onlogin="fb_login()" data-scope="public_profile,email" id="loginbutton" data-width="" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="true"></div>
-
                             </div>
 						</div>
 					</form> 

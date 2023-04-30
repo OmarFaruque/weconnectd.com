@@ -16,7 +16,8 @@ ini_set('display_errors', 1);
 <html>
     <head>
         <title><?php echo $config['pr_title']; ?></title>
-        <link rel="stylesheet" href="/static/css/required.css"> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="<?php echo ROOT_URL; ?>/static/css/required.css"> 
 		<style>
 			.alert-success{
 				max-width: 400px;
@@ -68,6 +69,7 @@ ini_set('display_errors', 1);
 		</style>
     </head>
     <body>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v15.0&appId=630777155515309&autoLogAppEvents=1" nonce="jvjpeaPi"></script>
         <div class="container">
             <?php require($_SESSION['ROOT_PATH'] . "/static/header.php"); ?>
             <br>
@@ -81,11 +83,7 @@ ini_set('display_errors', 1);
                             $password = @$_POST['password'];
                             $passwordhash = password_hash(@$password, PASSWORD_DEFAULT);
 
-                        // echo 'check post <br/><pre>';
-                        // print_R($_POST);
-                        // echo '</pre>';
-
-                        $stmt = $conn->prepare("SELECT `password`, `id` FROM users WHERE username = ? AND user_status = 1");
+                        $stmt = $conn->prepare("SELECT `password`, `id` FROM users WHERE username = ? AND user_status = 1 AND `status`!='deleted'");
                         echo $stmt->error;
                         $stmt->bind_param('s', $username);
                         $stmt->execute();
@@ -130,6 +128,10 @@ ini_set('display_errors', 1);
 							<div class="forgot">
 								<a href="forgot-password.php">Forgot Password?</a>
 							</div>
+                            <div class="facebookLogin mt-1">
+                                <p>Or</p>
+                                <div class="fb-login-button" data-onlogin="fb_login()" data-scope="public_profile,email" id="loginbutton" data-width="" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="true"></div>
+                            </div>
 						</div>
                         </form>
                     </div>
