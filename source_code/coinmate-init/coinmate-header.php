@@ -57,7 +57,7 @@ $userDetails = $coinmate->get_user();
                             <h1 class="m-0 text-gray-400">My Coinmate</h1>
                             <form action="" method="post">
                                 <input type="hidden" name="action" value="update_pool_status">
-                                <button type="submit" class="btn max-auto btn-lg w-100 <?php echo $userDetails['pool_status'] ? 'btn-primary' : 'btn-danger'; ?> "><?php echo $userDetails['pool_status'] ? 'Remove Pool': 'Join Pool'; ?></button>
+                                <button type="submit" class="btn max-auto btn-lg w-100 <?php echo $userDetails['pool_status'] ? 'btn-primary' : 'btn-danger'; ?> "><?php echo $userDetails['pool_status'] ? 'Leave Pool': 'Join Pool'; ?></button>
                             </form>                            
                             
                             <!-- <div class="input-group">
@@ -115,7 +115,7 @@ $userDetails = $coinmate->get_user();
                             
                                 <div class="mb-3 row">
                                     <div class="d-grid">
-                                        <button type="submit" id="searchuser" class="btn btn-primary btn-block">Action</button>
+                                        <button type="submit" id="searchuser" class="btn btn-primary btn-block">Search</button>
                                     </div>
                                 </div>
                             </form>
@@ -126,7 +126,7 @@ $userDetails = $coinmate->get_user();
                                     <li><a class="link-secondary text-decoration-none <?php echo !isset($_GET['action']) ? 'active' : ''; ?>" href="<?php echo ROOT_URL; ?>/coinmate.php">Personal Information</a></li>
                                     <li><a class="link-secondary text-decoration-none <?php echo isset($_GET['action']) && $_GET['action'] == 'edit' ? 'active' : ''; ?>" href="<?php echo ROOT_URL; ?>/coinmate.php?action=edit">Edit Profile</a></li>
                                     <li><a class="link-secondary text-decoration-none <?php echo isset($_GET['action']) && $_GET['action'] == 'my-messages' ? 'active' : ''; ?>" href="<?php echo ROOT_URL; ?>/coinmate.php?action=my-messages">My Messages</a></li>
-                                    <li><a class="link-secondary text-decoration-none" href="#">Manage Images</a></li>
+                                    <li><a class="link-secondary text-decoration-none <?php echo isset($_GET['action']) && $_GET['action'] == 'manage-images' ? 'active' : ''; ?>" href="<?php echo ROOT_URL; ?>/coinmate.php?action=manage-images">Manage Images</a></li>
                                     <li><a class="link-secondary text-decoration-none" href="#">Manage Videos</a></li>
                                 </ul>
                             </div>

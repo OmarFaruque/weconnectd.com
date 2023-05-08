@@ -53,6 +53,7 @@
                 name varchar(150) NOT NULL DEFAULT '',
                 city varchar(150) NOT NULL DEFAULT '',
                 country varchar(200) NOT NULL DEFAULT '',
+                gallary text NOT NULL DEFAULT '',
                 pool_status boolean NOT NULL DEFAULT false,
                 update_at TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP, 
                 submit_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -62,6 +63,88 @@
         }
 
 
+
+        /**
+         * Upload Single file 
+         * 
+         * @param $filename {string}
+         * @param $temp {string}
+         */
+        function uploadEachFiles($filename, $temp,   $user_id){
+            $target_dir = $_SESSION['ROOT_PATH']  . "/uploads/gallary/" . $user_id . '/';
+            if (!file_exists($target_dir)) {
+                mkdir($target_dir, 0777, true);
+            }
+            $target_file = $target_dir . basename($filename);
+            $needUpload = true;
+            $imgSize = getimagesize($temp);  //Image size
+
+            if(!$imgSize)
+                $needUpload = false;
+
+            if (file_exists($target_file))
+                $needUpload = false;
+
+            if(!$needUpload)
+                return false;
+            
+            if($needUpload){
+                if(move_uploaded_file($temp, $target_file))
+                    return true;
+            }
+        }
+
+
+        /**
+         * Store upload image to database for future use 
+         * 
+         * @param #files {array}
+         */
+        protected function storeImgToDb($files, $user_id){
+            $existingImages = $this->conn->prepare("SELECT `gallary` FROM {$this->usermeta_table} WHERE `user_id` = ?");
+            $existingImages->bind_param('d', $user_id);
+
+            $existingImages->execute();
+            $results = $existingImages->get_result();
+            $existingImages->close();
+
+            $result = $results->fetch_all();
+            $allfiles = json_encode($files);
+            if(count($result) > 0 && $result[0][0]){
+                $allfiles = array_merge(json_decode($result[0][0]), $files);
+                $allfiles = json_encode($allfiles);
+            }
+
+            
+            $insertGallary = $this->conn->prepare("UPDATE {$this->usermeta_table} SET `gallary` = ? WHERE `user_id` = ?");
+            $insertGallary->bind_param('sd', $allfiles, $user_id);
+            $insertGallary->execute();
+            $insertGallary->close();
+
+        }
+
+
+
+        /**
+         * Upload Gallary files
+         * 
+         * @param $files {Array}
+         */
+        function upload_gallary($files = array(), $user_id = 0){
+
+            if(isset($files['gallarys']['name']) && count($files['gallarys']['name']) > 0){
+                $dbArray = array();
+                foreach($files['gallarys']['name'] as $k => $singleFile){
+                    $uploadStatus = $this->uploadEachFiles($singleFile, $files['gallarys']['tmp_name'][$k], $user_id);
+                    if($uploadStatus)
+                        array_push($dbArray, $singleFile);
+                }
+
+                if(count($dbArray) > 0){
+                    $this->storeImgToDb($dbArray, $user_id);
+                }
+            }
+        }
       
 
         /**
@@ -128,8 +211,8 @@
          * @param array from form data
          */
         function update_coinbase_profile($data = array()){
-            $stmt = $this->conn->prepare("UPDATE `{$this->users_table}` SET gender = ?  WHERE 	id = ?");
-            $stmt->bind_param("sd", $data['sex'], $this->user_id);
+            $stmt = $this->conn->prepare("UPDATE `{$this->users_table}` SET gender = ?, zipcode = ?, age = ?  WHERE id = ?");
+            $stmt->bind_param("sdsd", $data['sex'], $data['zipcode'], $data['age'], $this->user_id);
             $ex = $stmt->execute();
             if($ex){
                 $qryMeta = $this->conn->prepare("SELECT `id` FROM `{$this->usermeta_table}` WHERE `user_id` = ?");

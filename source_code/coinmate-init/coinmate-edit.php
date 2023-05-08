@@ -4,7 +4,7 @@
                                 <img src="<?php echo ROOT_URL; ?>/dynamic/pfp/<?php echo $userDetails['pfp']; ?>" class="img-fluid rounded-circle" alt="">
                             </div>
                             <div class="flex-2">
-                                <h3><?php echo $userDetails['username']; ?></h3>
+                                <h3><?php echo $userDetails['name'] ? $userDetails['name'] : $userDetails['username']; ?></h3>
                             </div>
                         </div>
 
@@ -54,6 +54,20 @@
                         <option <?php echo $userDetails['country'] == $k ? 'selected' : ''; ?> value="<?php echo $k; ?>"><?php echo $country; ?></option>
                         <?php endforeach; ?>
                     </select>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="city" class="col-4 col-form-label">Zipcode</label>
+                <div class="col-8">
+                    <input type="text" class="form-control" value="<?php echo $userDetails['zipcode']; ?>" name="zipcode" id="zipcode" placeholder="Zipcode...">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="city" class="col-4 col-form-label">Age</label>
+                <div class="col-8">
+                    <input type="number" min="10" max="150" class="form-control" value="<?php echo $userDetails['age']; ?>" name="age" id="age" placeholder="Age...">
                 </div>
             </div>
             

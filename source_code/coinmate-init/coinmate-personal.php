@@ -6,8 +6,6 @@
                                 <h3><?php echo $userDetails['username']; ?></h3>
                             </div>
                         </div>
-
-
                         <!-- personal information -->
                         <div class="personal-information p-4">
                             <table class="table table-striped table-hover">
@@ -27,6 +25,14 @@
                                     <tr>
                                         <td>City</td>
                                         <td><?php echo $userDetails['city'] ? $userDetails['city'] : 'empty'; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Zipcode</td>
+                                        <td><?php echo $userDetails['zipcode'] ? $userDetails['zipcode'] : 'empty'; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Age</td>
+                                        <td><?php echo $userDetails['age'] ? $userDetails['age'] : 'empty'; ?></td>
                                     </tr>
                                 </tbody>
                             </table>

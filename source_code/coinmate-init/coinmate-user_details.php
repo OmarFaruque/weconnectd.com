@@ -45,10 +45,10 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><?php echo $user['name'] ? $user['name'] : 'empty'; ?></td>
-                        <td><?php echo $user['gender'] ? $user['gender'] : 'empty'; ?></td>
-                        <td><?php echo $user['country'] ? $user['country'] : 'empty'; ?></td>
-                        <td><?php echo $user['city'] ? $user['city'] : 'empty'; ?></td>
+                        <td><?php echo isset($user['name']) ? $user['name'] : 'empty'; ?></td>
+                        <td><?php echo isset($user['gender']) ? $user['gender'] : 'empty'; ?></td>
+                        <td><?php echo isset($user['country']) ? $user['country'] : 'empty'; ?></td>
+                        <td><?php echo isset($user['city']) ? $user['city'] : 'empty'; ?></td>
                     </tr>
                 </tbody>
             </table>
