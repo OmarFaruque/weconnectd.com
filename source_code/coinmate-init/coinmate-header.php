@@ -54,7 +54,8 @@ $userDetails = $coinmate->get_user();
                     </div>
 
                     <div class="flex-1 bg-white d-flex flex-column gap-3 p-4 border-rounded rounded border-radious-4">
-                            <h1 class="m-0 text-gray-400">My Coinmate</h1>
+                        <center><a href="/coinmate.php"><img src="https://i.ibb.co/M6Y9mGz/clubmeme.png" alt="clubmeme" width="300" height="220"></a><br /><a target='_blank' href='https://clubmeme.vip'>VIP</a><br /></center>
+                            <b><font size="6"><h0 class="m-0 text-gray-400">Cool Crypto Users</h0></font></b>
                             <form action="" method="post">
                                 <input type="hidden" name="action" value="update_pool_status">
                                 <button type="submit" class="btn max-auto btn-lg w-100 <?php echo $userDetails['pool_status'] ? 'btn-primary' : 'btn-danger'; ?> "><?php echo $userDetails['pool_status'] ? 'Leave Pool': 'Join Pool'; ?></button>
@@ -110,6 +111,17 @@ $userDetails = $coinmate->get_user();
                                         <option value="<?php echo $k; ?>"><?php echo $country; ?></option>
                                         <?php endforeach; ?>
                                     </select>
+                                </div>
+                                
+                                <div class="mb-3 row" data-bs-toggle="tooltip" data-bs-placement="top" title="Country">
+                                    <div class="d-grid">
+                                        <select class="form-select" name="club_token" id="club_tokens">
+                                            <option value="">Club Coin/Token...</option>
+                                            <?php foreach($coinmate->availableCoin() as $k => $coin): ?>
+                                            <option value="<?php echo $k; ?>"><?php echo $coin; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
                                 </div>
                                 
                             

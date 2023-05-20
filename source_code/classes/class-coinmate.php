@@ -42,6 +42,25 @@
             $this->_create_usermeta_table();
         }
 
+        
+        /**
+         * Return available club coin
+         * 
+         * @return array
+         */
+
+        public function availableCoin(){
+            return array(
+                'pepe' => 'PEPE and MemeVader',
+                'bitcoin' => 'Bitcoin',
+                'ethereum' => 'Ethereum',
+                'solana' => 'Solana',
+                'dogecoin' => 'Dogecoin',
+                'goldencoin' => 'Goldencoin',
+                'coinconnect' => 'Coinconnect',
+                'vadermoon' => 'Vadermoon'
+            );
+        }
 
         /**
          * Create user meta table for store user additional data from coinmate features 
@@ -55,6 +74,7 @@
                 country varchar(200) NOT NULL DEFAULT '',
                 gallary text NOT NULL DEFAULT '',
                 pool_status boolean NOT NULL DEFAULT false,
+                club_token varchar(200) NOT NULL DEFAULT '',
                 update_at TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP, 
                 submit_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 PRIMARY KEY (id)
@@ -63,6 +83,23 @@
         }
 
 
+        /**
+         * Get all images by user id
+         * 
+         * @return string
+         */
+        public function get_gallary_images($_userid){
+            $existingImages = $this->conn->prepare("SELECT `gallary` FROM {$this->usermeta_table} WHERE `user_id` = ?");
+            $existingImages->bind_param('d', $_userid);
+
+            $existingImages->execute();
+            $results = $existingImages->get_result();
+            $existingImages->close();
+
+            $result = $results->fetch_assoc();
+            // $allfiles = json_encode($files); 
+            return $result['gallary'] ? json_decode($result['gallary']) : false;
+        }
 
         /**
          * Upload Single file 
@@ -222,14 +259,14 @@
                 
                 if($results->num_rows > 0){
                     // update meta data
-                    $stmt = $this->conn->prepare("UPDATE `{$this->usermeta_table}` SET `name` = ?, `city` = ?, `country` = ? WHERE `user_id` = ?");    
-                    $stmt->bind_param("sssd", $data['name'], $data['city'], $data['country'], $this->user_id);
+                    $stmt = $this->conn->prepare("UPDATE `{$this->usermeta_table}` SET `name` = ?, `city` = ?, `country` = ?, `club_token` = ? WHERE `user_id` = ?");    
+                    $stmt->bind_param("ssssd", $data['name'], $data['city'], $data['country'], $data['club_token'], $this->user_id);
                     $ex = $stmt->execute();
                     $qryMeta->close();
                 }else{
                     // Insert meta data
-                    $stmt = $this->conn->prepare("INSERT INTO `{$this->usermeta_table}` (`user_id`, `name`, `city`, `country`) VALUES (?, ?, ?, ?)");
-                    $stmt->bind_param("dsss", $this->user_id, $data['name'], $data['city'], $data['country']);
+                    $stmt = $this->conn->prepare("INSERT INTO `{$this->usermeta_table}` (`user_id`, `name`, `city`, `country`, `club_token`) VALUES (?, ?, ?, ?, ?)");
+                    $stmt->bind_param("dssss", $this->user_id, $data['name'], $data['city'], $data['country'], $data['club_token']);
                     $stmt->execute();
                 }
             }

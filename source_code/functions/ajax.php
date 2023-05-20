@@ -60,6 +60,7 @@ if(isset($_POST['coinmate_search']) && !empty($_POST['coinmate_search'])){
     $sex = $_POST['sex'];  
     $zipcode = $_POST['zipcode']; 
     $city = $_POST['city'];
+    $club_token = $_POST['club_token'];
     $country = $_POST['country'];
     $user_id = $_POST['user_id'];
 
@@ -83,6 +84,9 @@ if(isset($_POST['coinmate_search']) && !empty($_POST['coinmate_search'])){
         }
         if(!empty($country)){
             $args .= " AND m.`country`='{$country}'";
+        }
+        if(!empty($club_token)){
+            $args .= " AND m.`club_token`='{$club_token}'";
         }
         
         $stmt = $conn->prepare($args);

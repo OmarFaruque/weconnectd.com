@@ -6,6 +6,11 @@
  */
 require_once($_SESSION['ROOT_PATH'] . '/functions/default_functions.php');
 
+// Burn Profile 
+if (isset($_GET['action']) && $_GET['action'] == 'burn-profile')
+{
+    burnUserProfile($_GET['bid'], $conn);
+}
 
 
 
@@ -115,11 +120,14 @@ if (isset($_SESSION['siteusername'])) {
 <div class="headerBottom">
         <div id="mainManu" class="mainmanu">
             <ul>
-                <li><a href="/links">WeLinks</a></li>
+                <li><a href="/links">WeChat</a></li>
                 <li><a href="/blogs">Blogs</a></li>
                 <li><a href="/connectoclocks">ConnectO'Clock</a></li>
                 <li><a href="/bulletin">Bulletin</a></li>
-                <li><a href="/undercon.php">Blockbeeper</a></li>
+                <li><a href="<?php echo ROOT_URL; ?>coinmate.php">Club Meme</a></li>
+                <li><a href="/exchange.php">Exchanges</a></li>
+                <li><a href="http://coinconnect.info">Block Explorer</a></li>
+                <li><a href="<?php echo ROOT_URL; ?>forum/">Forum</a></li>
                 <li><a href="/pms.php">PMs <?php echo ($unread_pm_count === 0 ? "" : " (" . $unread_pm_count . ")") ?></a></li>
                 <?php if(isset($_SESSION['siteusername'])): ?>
                     <li><a href="/ghost_chat.php?recieve=<?php echo $_SESSION['siteusername']; ?>">GMs <?php echo ($unread_gm_count === 0 ? "" : " (" . $unread_gm_count . ")") ?></a></li>
@@ -128,20 +136,19 @@ if (isset($_SESSION['siteusername'])) {
                 <li class="haveChild"><a class="openButton" onClick="openChildUI(this, 'open')" href="#">More</a>
                     <ul id="subMenu" class="">
                         <li><a href="https://weconnectd.com/blogs/view.php?id=4">Crypto 101</a></li>
-                        <li><a href="http://goldenaddress.org">Web/Paper Wallet</a></li>
+                        <li><a href="http://goldenaddress.org">Web/Paper Wallet Address</a></li>
                         <li><a href="/undercon.php">Coinconnect Fountain </a></li>
-                        <li><a href="http://45.77.75.50:3001/">Block Explorer</a></li>
+                        <li><a href="http://coinconnect.info">Block Explorer</a></li>
                         <li><a href="http://coinconnect.world">Coinconnect.World</a></li>
-                        <li><a href="<?php echo ROOT_URL; ?>forum/">Forum</a></li>
-                        <li><a href="/sc-top-40.php">SC Top 40 </a></li>
+                        
+                        <li><a href="/sc-top-40.php">SC Top 20 </a></li>
                         <li><a href="/sports">Sports</a></li>
-                        <li><a href="<?php echo ROOT_URL; ?>coinmate.php">Coinmate</a></li>
+                        <li><a href="<?php echo ROOT_URL; ?>undercon.php">Blockbeeper</a></li>
                         <li><a href="/coinroll.php">Coinroll </a></li>
                         <li><a href="<?php echo ROOT_URL; ?>undercon.php">Satoshilist</a></li>
                         <li><a href="/undercon.php">Jobs</a></li>
                         <li><a href="http://gamestart.run">The Coinade</a></li>
                         <li><a href="/webit.php">WeBitstation</a></li>
-                        <li><a href="/exchange.php">Exchanges</a></li>
                         <li><a href="/users.php">All Users</a></li>
                         <li><a href="/scam.php">Scam Alert List</a></li>
                         <li><a href="/wejail.php">WeJailhouse</a></li>

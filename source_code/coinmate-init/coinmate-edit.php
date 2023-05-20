@@ -72,6 +72,30 @@
             </div>
             
             <div class="mb-3 row">
+                <label for="city" class="col-4 col-form-label">Occupation</label>
+                <div class="col-8">
+                    <input type="text" class="form-control" value="<?php echo $userDetails['occupation']; ?>" name="occupation" sd="occupation" placeholder="Occupation...">
+                </div>
+            </div>
+            
+            <div class="mb-3 row">
+                <label for="city" class="col-4 col-form-label">Interests</label>
+                <div class="col-8">
+                    <input type="text" class="form-control" value="<?php echo $userDetails['interests']; ?>" name="interests" id="interest" placeholder="Interests...">
+                </div>
+            </div>
+            
+            <div class="mb-3 row">
+                <label for="club_token" class="col-4 col-form-label">Club Coin/Token</label>
+                <div class="col-8">    
+                    <select class="form-select" name="club_token" id="club_token">
+                        <option value="">Select a coin...</option>
+                        <?php foreach($coinmate->availableCoin() as $k => $coin): ?>
+                            <option  <?php echo isset($userDetails['club_token']) && $userDetails['club_token'] == $k ? 'selected' : ''; ?> value="<?php echo $k; ?>"><?php echo $coin; ?></option>    
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
                 <div class="offset-sm-4 col-sm-8">
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>

@@ -7,7 +7,8 @@ jQuery(document).ready(function($){
         sex = document.getElementById('ssex').value, 
         zipcode = document.getElementById('szipcode').value, 
         city = document.getElementById('scity').value, 
-        country = document.getElementById('scountry').value;
+        country = document.getElementById('scountry').value, 
+        club_token = document.getElementById('club_tokens').value;
 
         let data = {
             age: age, 
@@ -15,11 +16,11 @@ jQuery(document).ready(function($){
             zipcode: zipcode, 
             city: city, 
             country: country, 
+            club_token: club_token,
             coinmate_search: true, 
             user_id: window.global.user_id
         }
         
-        console.table('data before: ', data);
         let html = '<div class="p-4"><div class="row">';
         $.ajax({
             url: global.root_url + "functions/ajax.php",

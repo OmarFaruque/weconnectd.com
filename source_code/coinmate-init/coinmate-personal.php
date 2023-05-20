@@ -34,6 +34,18 @@
                                         <td>Age</td>
                                         <td><?php echo $userDetails['age'] ? $userDetails['age'] : 'empty'; ?></td>
                                     </tr>
+                                    <tr>
+                                        <td>Occupation</td>
+                                        <td><?php echo $userDetails['occupation'] ? $userDetails['occupation'] : 'empty'; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Interests</td>
+                                        <td><?php echo $userDetails['interests'] ? $userDetails['interests'] : 'empty'; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Club Coin/Token</td>
+                                        <td><?php echo $userDetails['club_token'] ? $userDetails['club_token'] : 'empty'; ?></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

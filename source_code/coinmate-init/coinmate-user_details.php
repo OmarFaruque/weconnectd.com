@@ -23,9 +23,11 @@
         </div>
         <div class="flex-2">
             <h3><?php echo !empty($user['name']) ? $user['name'] : $user['username']; ?></h3>
+            <div class="mt-3">
+                <a name="" class="stretched-link text-decoration-none overflow-hidden position-relative" href="<?php echo ROOT_URL; ?>coinmate.php?action=more-profile-pics&id=<?php echo $user['id']; ?>" role="button">More Profile Images</a>
+            </div>
         </div>
     </div>
-
 
     <!-- Messages -->
     <div class="personal-information p-4">
@@ -49,6 +51,9 @@
                         <td><?php echo isset($user['gender']) ? $user['gender'] : 'empty'; ?></td>
                         <td><?php echo isset($user['country']) ? $user['country'] : 'empty'; ?></td>
                         <td><?php echo isset($user['city']) ? $user['city'] : 'empty'; ?></td>
+                        <td><?php echo isset($user['occupation']) ? $user['occupation'] : 'empty'; ?></td>
+                        <td><?php echo isset($user['interests']) ? $user['interests'] : 'empty'; ?></td>
+                        <td><?php echo isset($user['token']) ? $user['token'] : 'empty'; ?></td>
                     </tr>
                 </tbody>
             </table>
