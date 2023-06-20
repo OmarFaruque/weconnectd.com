@@ -1,4 +1,9 @@
     <?php 
+    
+    //  ini_set('display_errors', 1);
+    // ini_set('display_startup_errors', 1);
+    // error_reporting(E_ALL);
+
         $user = getUserFromId($_GET['id'], $conn);
         
         if(isset($_POST['submit'])){
@@ -11,7 +16,7 @@
         $room = array((int)$userDetails['id'], (int)$_GET['id']);
         sort($room);
         $room = join($room);
-        $messages = $coinmate->get_messages($room);
+        $messages = $coinmate->get_messages($room, (int)$userDetails['id']);
         // echo 'messages <br/><pre>';
         // print_r($messages);
         // echo '</pre>';
@@ -22,7 +27,13 @@
             <img style="height: 250px; width:250px; object-fit: cover;" src="<?php echo ROOT_URL; ?>dynamic/pfp/<?php echo $user['pfp']; ?>" class="img-fluid rounded-circle shadow" alt="">
         </div>
         <div class="flex-2">
-            <h3><?php echo !empty($user['name']) ? $user['name'] : $user['username']; ?></h3>
+            <h3><?php  
+                        if(!empty($user['name'])):
+                            echo $user['name']; 
+                        else:
+                            echo !empty($user['username']) ? $user['username'] : ''; 
+                        endif;
+            ?></h3>
             <div class="mt-3">
                 <a name="" class="stretched-link text-decoration-none overflow-hidden position-relative" href="<?php echo ROOT_URL; ?>coinmate.php?action=more-profile-pics&id=<?php echo $user['id']; ?>" role="button">More Profile Images</a>
             </div>
@@ -34,7 +45,7 @@
         <h5>Bio</h5>
         <div class="shadow-sm p-3 rounded">
             <div class="bio-details mb-3">
-                <?php echo $user['bio']; ?>
+                <?php echo !empty($user['bio']) ? $user['bio'] : ''; ?>
             </div>
             <table class="table table-striped table-hover">
                 <thead>

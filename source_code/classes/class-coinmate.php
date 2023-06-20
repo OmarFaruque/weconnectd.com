@@ -202,13 +202,19 @@
             $result = mysqli_query($this->conn, $query);
         }
 
-        function get_messages($room){
+        function get_messages($room, $receiver_id = 0){
              $qry = $this->conn->prepare("SELECT * FROM {$this->table} WHERE `room` = ?");
              $qry->bind_param('s', $room);
              
              $qry->execute();
              $results = $qry->get_result();
              $qry->close();
+
+             //Make message as read 
+             $makeRead = $this->conn->prepare("UPDATE {$this->table} SET `v_status`='read' WHERE `receiver` = ? AND `room` = ?");
+             $makeRead->bind_param('ds', $receiver_id, $room); 
+             $makeRead->execute();
+
              return $results;
         }
         /**

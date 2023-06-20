@@ -3,8 +3,8 @@
 if (!isset($_SESSION)){
     session_start();
 }
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
     
 // Root path $_SESSION['ROOT_PATH']
 
@@ -67,6 +67,12 @@ ini_set('display_errors', 1);
 				width: calc(100% - 100px);
 			}
 		</style>
+        <script>
+            var local = {
+                root_url: "<?php echo ROOT_URL; ?>", 
+                login_status: <?php echo isset($_SESSION['siteusername']) && isset($_SESSION['user_id']) ? 'true' : 'false'; ?>
+            }
+         </script>
     </head>
     <body>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v15.0&appId=630777155515309&autoLogAppEvents=1" nonce="jvjpeaPi"></script>
@@ -167,5 +173,7 @@ ini_set('display_errors', 1);
         </div>
         <br>
         <?php require($_SESSION['ROOT_PATH'] . "/static/footer.php"); ?>
+        <script src="OwlCarousel/docs/assets/vendors/jquery.min.js"></script>
+        <script src="<?php echo ROOT_URL; ?>static/js/global.js"></script>
     </body>
 </html>
